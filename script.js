@@ -26,6 +26,9 @@ const slides = [
 let currentSlide = 0;
 function showSlide(index) {
   currentSlide = (index + slides.length) % slides.length;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelector('.hero-content').animate([{opacity: 0.35, transform: 'translateY(10px)'}, {opacity: 1, transform: 'translateY(0)'}], {duration: 350, easing: 'ease-out'});
+  }
   const [title, highlight, description, label, href] = slides[currentSlide];
   const heading = document.querySelector('#hero-title');
   const span = document.createElement('span'); span.textContent = highlight;
@@ -47,3 +50,34 @@ document.querySelector('#contact-form').addEventListener('submit', event => {
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+// Animações curtas, sem ocultar conteúdo quando JavaScript está indisponível.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealElements = document.querySelectorAll('.section-title, .intro-text, .service-box, .difference-copy, .cities, .contact-copy, .contact-form');
+let revealObserver;
+if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealElements.forEach(element => {
+    if (element.getBoundingClientRect().top > innerHeight) {
+      element.classList.add('reveal-ready');
+      revealObserver.observe(element);
+    }
+  });
+}
+reducedMotion.addEventListener('change', event => {
+  if (event.matches) {
+    revealObserver?.disconnect();
+    revealElements.forEach(element => element.classList.add('is-visible'));
+  }
+});
+const headerObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  document.querySelector('.header').classList.toggle('scrolled', !entries[0].isIntersecting);
+}) : null;
+headerObserver?.observe(document.querySelector('.topbar'));
