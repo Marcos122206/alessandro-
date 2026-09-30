@@ -1,0 +1,24 @@
+{
+  "name": "primary",
+  "version": "1.0.0",
+  "description": "Site estático pronto para Vercel. Abra `index.html` ou rode `python3 -m http.server 8000`.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcos122206/alessandro-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcos122206/alessandro-/issues"
+  },
+  "homepage": "https://github.com/Marcos122206/alessandro-#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
