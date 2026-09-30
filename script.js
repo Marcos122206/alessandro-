@@ -54,7 +54,7 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Animações curtas, sem ocultar conteúdo quando JavaScript está indisponível.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealElements = document.querySelectorAll('.section-title, .intro-text, .service-box, .difference-copy, .cities, .contact-copy, .contact-form');
+const revealElements = document.querySelectorAll('.section-title, .intro-text, .service-box, .difference-copy, .cities, .contact-copy, .contact-form, .photo-card');
 let revealObserver;
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
   revealObserver = new IntersectionObserver(entries => {

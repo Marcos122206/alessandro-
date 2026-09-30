@@ -19,4 +19,4 @@ A redação dos registros profissionais e credenciamento dos certificados aguard
 ## Referência visual e imagem
 
 Estrutura institucional inspirada em https://esegst.com.br/, com identidade, conteúdo e código próprios.
-Imagem ilustrativa da construção civil: https://images.unsplash.com/photo-1504307651254-35680f356dfd (Unsplash), salva localmente em `assets/seguranca-trabalho.jpg`. Não representa o instrutor ou uma turma real.
+As seis fotos fornecidas pelo titular estão na galeria. A foto da apresentação também é usada no banner, e a foto com a retroescavadeira aparece na seção de experiência. Os arquivos originais foram preservados.
