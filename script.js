@@ -47,6 +47,7 @@ document.querySelector('#contact-form').addEventListener('submit', event => {
   const city = document.querySelector('#contact-city').value.trim();
   const extra = document.querySelector('#contact-message').value.trim();
   const message = [name ? `Olá! Meu nome é ${name}.` : 'Olá!', 'Gostaria de informações sobre seus serviços.', city ? `Minha cidade: ${city}.` : '', extra, 'Gostaria de consultar datas, valores e disponibilidade.'].filter(Boolean).join('\n');
+  window.va?.('event', 'contact_form_submit');
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
